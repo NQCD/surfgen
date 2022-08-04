@@ -758,7 +758,7 @@ CONTAINS
    open(UNIT=SURFIN,FILE=trim(adjustl(filename)),ACCESS='sequential',&
        form='formatted',POSITION='REWIND',ACTION='READ',STATUS='OLD',IOSTAT=ios)
    if(ios/=0)then
-     stop'readHd: Cannot open input file'
+     stop 'readHd: Cannot open input file'
      return
    end if!(ios/=0)
    read(SURFIN,1000)title!'SURFGEN.GLOBAL Hd COEFFICIENTS FILE'

@@ -33,7 +33,7 @@ SUBROUTINE readCoords()
   read(CSETFL,1000,IOSTAT=ios) comment
 ! Get number of coordinate sets and additional conditions
   read(CSETFL,*,IOSTAT=ios) nCoordSets,nAddCond
-  if(ios/=0.or.nCoordSets<1)stop"Error reading coord set definitions."
+  if(ios/=0.or.nCoordSets<1)stop "Error reading coord set definitions."
 
   if(allocated(CoordSet))deallocate(CoordSet)
   allocate(CoordSet(nCoordSets))

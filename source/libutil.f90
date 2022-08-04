@@ -162,14 +162,14 @@ SUBROUTINE DSYINV(UPLO,N,A,LDA,INVA,LDI,TOL,NNEG,NZERO,ENFPD)
 
   CALL DSYEVR('V','A',UPLO,n,A,LDA,dble(0),dble(0),0,0,TOL,nev, &
          eval,evec,n,ISUPPZ,dtst,int(-1),itst,int(-1), INFO )
-  if(INFO/=0)STOP"DSYINV: Workspace query failed."
+  if(INFO/=0)STOP "DSYINV: Workspace query failed."
   LWORK  = int(dtst(1))
   LIWORK = itst(1)
   allocate(WORK(LWORK))
   allocate(IWORK(LIWORK))
   CALL DSYEVR('V','A',UPLO,n,A,LDA,dble(0),dble(0),0,0,TOL,nev, &
              eval,evec,n,ISUPPZ,WORK,LWORK,IWORK,LIWORK, INFO )
-  if(INFO/=0)STOP"DSYINV: eigenvalue decomposition failed."
+  if(INFO/=0)STOP "DSYINV: eigenvalue decomposition failed."
   nneg=0
   nzero=n-nev
   invA=dble(0)

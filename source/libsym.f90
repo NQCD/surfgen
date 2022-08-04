@@ -500,7 +500,7 @@ CONTAINS
       do j=1,pT%ord
         if(.not. associated(pTPmt%icTerm(coordPerm(i,pT%coord(j)))%p))then
           print *,"Pmt=",coordPerm(i,:),", term=",pT%coord 
-          stop'genPermCycle: Permuted term does not exist'
+          stop 'genPermCycle: Permuted term does not exist'
         end if
         pTPmt=>pTPmt%icTerm(coordPerm(i,pT%coord(j)))%p
         sgn=sgn*sgnCPerm(i,pT%coord(j))
@@ -603,7 +603,7 @@ CONTAINS
 
     ll=nl(m)
     rr=nr(m)
-    if(LR/=ll*rr)stop"MatProj: inconsistent LR value"
+    if(LR/=ll*rr)stop "MatProj: inconsistent LR value"
     iAdd = 0
     do iSym=1,nSymLineUps
       ! check the parity of the current symmetry line up
@@ -634,7 +634,7 @@ CONTAINS
        LWORK=LR*5+1
        JPVT=0
        CALL DGEQP3(LR,LR,XT,LR,JPVT, TAU, WORK, LWORK, INFO)
-       if(INFO/=0)stop"MatProj: Failed to decomposite XT"
+       if(INFO/=0)stop "MatProj: Failed to decomposite XT"
        ! Filter out rows whose diagonal element is higher than the threshold.
        do i=2,LR
          if(XT(i,i)>MatProjCutOff)then
