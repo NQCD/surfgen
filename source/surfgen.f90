@@ -78,7 +78,7 @@ SUBROUTINE readinput(jtype)
       GrpSym=groupsym(1:nGrp,1:nSymLineUps)
       GrpPrty=groupprty(1:nGrp,1:nSymLineUps) 
       ! get the number of allowed symmetries for each group
-      if(nSymLineUps<1)stop"ERROR: There has to be at least one set of symmetry setups"
+      if(nSymLineUps<1)stop "ERROR: There has to be at least one set of symmetry setups"
       do i=1,nGrp
         do j=1,nSymLineUps
           if(GrpSym(i,j)<1.or.GrpSym(i,j)>nirrep.or.irrep(GrpSym(i,j))%Dim.ne.irrep(GrpSym(i,1))%Dim &

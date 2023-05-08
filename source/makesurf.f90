@@ -2263,19 +2263,19 @@ stloop: do k = s1,s2
     ! perform work space query
     CALL DSYEVR('V','A','U',nex,BBt,nex,0.,0.,0,0,exacttol/10,nev,eval,evec,nex,&
                 ISUPPZ,tmp,-1,LIWORK,-1,INFO)
-    if(INFO/=0)stop"solve_diagHess: work space query failed"
+    if(INFO/=0)stop "solve_diagHess: work space query failed"
     !-------------------------
     ! allocate workspace
     LWORK = int(tmp(1))
     allocate(WORK(LWORK),stat=info)
-    if(info/=0)stop"solve_diagHess: failed to allocate work space."
+    if(info/=0)stop "solve_diagHess: failed to allocate work space."
     allocate(IWORK(LIWORK),stat=info)
-    if(info/=0)stop"solve_diagHess: failed to allocate iwork space."
+    if(info/=0)stop "solve_diagHess: failed to allocate iwork space."
     !-------------------------
     ! do the eigenvalue decomposition  BBt=Q.eval.Q^T
     CALL DSYEVR('V','A','U',nex,BBt,nex,0.,0.,0,0,exacttol/1d8,nev,eval,evec,nex,&
                 ISUPPZ,WORK,LWORK,IWORK,LIWORK,INFO)
-    if(info/=0)stop"solve_diagHess: failed to perform eigenvalue decomposition"
+    if(info/=0)stop "solve_diagHess: failed to perform eigenvalue decomposition"
     if(nex/=nev)print*,"WARNING: solve_diagHess: number of eigenvalues and equations do not match"
     !-------------------------
     ! release workspace 

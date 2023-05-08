@@ -118,7 +118,7 @@
       double precision :: hnew(ncons+nex),lag,jaco(nex,ncons),jaco2(nex,ncons)
       integer  :: iseek,ilast
       double precision :: nrmener, avgener, nrmgrad, avggrad, LSErr,ExErr
-      if(ndisp==nStep+2)stop"bug in takeLinStep::addDisp()  :  ndisp overflow"
+      if(ndisp==nStep+2)stop "bug in takeLinStep::addDisp()  :  ndisp overflow"
       ndisp=ndisp+1
       d(ndisp) = dnew     
       hnew(1:ncons) = hvec+dnew*dvec
